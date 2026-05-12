@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
+  --background: #f7f4ed;
   --foreground: #171717;
 }
 
@@ -12,15 +12,56 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+.field-control {
+  width: 100%;
+  border-radius: 1rem;
+  border: 1px solid rgb(226 232 240);
+  background: rgba(255, 255, 255, 0.9);
+  padding: 0.8rem 1rem;
+  color: rgb(15 23 42);
+  outline: none;
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease;
+}
+
+.field-control:focus {
+  border-color: rgb(5 150 105);
+  box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.12);
+}
+
+.field-control::placeholder {
+  color: rgb(148 163 184);
+}
+
+.dark .field-control {
+  border-color: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.08);
+  color: rgb(248 250 252);
+}
+
+.dark .field-control option {
+  color: rgb(15 23 42);
 }

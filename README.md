@@ -1,36 +1,166 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# HabitPulse
 
-## Getting Started
+Live demo placeholder: https://habitpulse.vercel.app
 
-First, run the development server:
+HabitPulse is a modern, calm, and fully stateless habit tracker web app built with Next.js, React, and Tailwind CSS.
+
+Tagline: "Build better routines, one day at a time."
+
+## Problem Statement
+
+Users often want to build good habits such as drinking water, exercising, reading, meditating, sleeping early, or studying consistently. However, they lose track of daily progress when habits are not organized clearly. HabitPulse solves this by providing a simple, beautiful, stateless dashboard where users can add habits, mark them as completed for today, and view their daily completion progress.
+
+## Objectives
+
+- Provide a simple dashboard to temporarily track daily habits.
+- Let users add, complete, undo, filter, and delete habits during the current browser session.
+- Display useful daily progress summaries and motivational messages.
+- Keep the app stateless and easy to explain for an academic viva.
+- Make the project deployable directly on Vercel without backend setup.
+
+## Features Implemented
+
+- Add habits with name, category, target frequency, priority, and optional note.
+- Categories: Health, Fitness, Study, Mindfulness, Productivity, Sleep, Reading, Personal.
+- Priority options: Low, Medium, High.
+- Frequency options: Daily, Weekdays, Weekends, Custom.
+- Mark habits as done today, undo completion, and delete habits.
+- Dashboard summary cards for total habits, completed today, pending today, and completion rate.
+- Circular progress indicator and progress bar for today's completion rate.
+- Motivational microcopy based on progress.
+- Filters for All, Completed, Pending, and High Priority habits.
+- Load Demo Data and Clear All controls.
+- Friendly form validation messages.
+- Inline success messages after adding habits or loading demo data.
+- Helpful empty state with a demo loading button.
+- Responsive premium wellness-focused UI.
+- Optional dark mode toggle using React state only.
+
+## Tech Stack
+
+- Next.js
+- React
+- TypeScript
+- Tailwind CSS
+- lucide-react icons
+- Vercel-ready app router structure
+
+## Frontend Implementation
+
+The application is implemented as a client-side React page in `src/app/page.tsx`. It uses reusable UI sections for summary cards, form fields, habit cards, and the empty state. Dashboard values are calculated dynamically from the current React state.
+
+Each habit contains:
+
+- `id`
+- `name`
+- `category`
+- `frequency`
+- `priority`
+- `note`
+- `completedToday`
+- `createdAt`
+
+Completion rate is calculated as:
+
+```text
+completed habits / total habits * 100
+```
+
+## Backend and State Handling
+
+There is no backend in this project. The app does not require authentication, server routes, environment variables, or external API calls.
+
+This is a stateless prototype. All habit data is stored temporarily using React useState and resets on page refresh.
+
+The app intentionally does not use:
+
+- Database
+- localStorage
+- sessionStorage
+- Cookies
+- IndexedDB
+- Backend persistence
+- External APIs
+
+## Database and Stateless Behavior
+
+HabitPulse stores all user-created habit data only in React component state through `useState`. Demo habits are also loaded into React state only when the user clicks the Load Demo Data button.
+
+When the page is refreshed, React state is recreated from scratch, so all added habits and loaded demo habits disappear. This behavior is intentional and matches the assignment requirement.
+
+## Deployment Steps for Vercel
+
+1. Push the project to a GitHub repository.
+2. Open Vercel and choose Add New Project.
+3. Import the GitHub repository.
+4. Keep the default Next.js settings.
+5. Click Deploy.
+
+No environment variables, database URLs, or backend configuration are required.
+
+## How to Run Locally
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open the local URL shown in the terminal, usually:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```text
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Create a production build:
 
-## Learn More
+```bash
+npm run build
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Project Output
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The final output is a fully responsive HabitPulse dashboard where users can:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Add daily habits.
+- Mark habits as complete.
+- Undo completed habits.
+- Delete habits.
+- Load sample demo habits.
+- Clear all current habits.
+- View total, completed, pending, and completion rate statistics.
+- Filter habits by completion and priority.
 
-## Deploy on Vercel
+## Limitations
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Data is not saved after refresh because the project is intentionally stateless.
+- There are no user accounts or authentication.
+- Historical streaks and weekly analytics are not stored.
+- The app does not sync across devices.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Future Enhancements
+
+- Optional account-based habit history.
+- Calendar and streak tracking.
+- Weekly and monthly analytics.
+- Reminder notifications.
+- Exportable habit reports.
+- Cloud sync with a database for a non-stateless production version.
+
+## Conclusion
+
+HabitPulse demonstrates how a wellness-focused habit tracker can feel complete and polished while staying fully stateless. It is suitable as a prototype, academic project, or Vercel-deployable frontend demo.
+
+## References
+
+- Next.js documentation: https://nextjs.org/docs
+- React documentation: https://react.dev
+- Tailwind CSS documentation: https://tailwindcss.com/docs
+- Vercel deployment documentation: https://vercel.com/docs
+- lucide-react icons: https://lucide.dev
